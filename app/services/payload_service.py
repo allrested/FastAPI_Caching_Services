@@ -1,7 +1,7 @@
 from hashlib import sha256
 from typing import List
-from models import CachedPayload
-from repository.payload_repository import PayloadRepository
+from app.models import Payload as CachedPayload
+from app.repository.payload_repository import PayloadRepository
 
 class PayloadService:
     def __init__(self, repository: PayloadRepository):

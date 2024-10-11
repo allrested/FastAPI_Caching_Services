@@ -3,3 +3,5 @@ uvicorn
 sqlmodel
 pydantic
 psycopg2-binary
+httpx
+pytest
