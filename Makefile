@@ -33,3 +33,8 @@ clean:
 install:
 	@echo "Installing required packages..."
 	@pip install flake8 black
+
+# test the application
+test:
+	@echo "Testing the application..."
+	@pytest \tests\
