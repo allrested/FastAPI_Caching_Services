@@ -1,6 +1,9 @@
 # Use the official Python image.
 FROM python:3.10-slim
 
+RUN apt-get update \
+    && apt-get -y install build-essential
+
 # Set the working directory in the container
 WORKDIR /
 

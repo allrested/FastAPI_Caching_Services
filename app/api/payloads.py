@@ -5,10 +5,14 @@ from app.dependencies import get_payload_service
 
 router = APIRouter()
 
+
 @router.post("/payload")
-def create_payload(payload: PayloadRequest, service: PayloadService = Depends(get_payload_service)):
+def create_payload(
+    payload: PayloadRequest, service: PayloadService = Depends(get_payload_service)
+):
     cached_payload = service.get_or_create_payload(payload.list_1, payload.list_2)
     return {"message": "Payload generated", "id": cached_payload.id}
+
 
 @router.get("/payload/{id}")
 def get_payload(id: str, service: PayloadService = Depends(get_payload_service)):

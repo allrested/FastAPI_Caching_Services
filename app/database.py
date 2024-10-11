@@ -8,6 +8,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./cache.db")
 # Create a SQLModel database engine
 engine = create_engine(DATABASE_URL, echo=True)
 
+
 # Dependency for session management in FastAPI
 def get_session():
     """Provide a transactional scope for a series of operations within a request."""

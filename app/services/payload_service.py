@@ -3,6 +3,7 @@ from typing import List
 from app.models import Payload as CachedPayload
 from app.repository.payload_repository import PayloadRepository
 
+
 class PayloadService:
     def __init__(self, repository: PayloadRepository):
         self.repository = repository
@@ -17,10 +18,16 @@ class PayloadService:
     def interleave_payload(self, list_1: List[str], list_2: List[str]) -> str:
         transformed_list_1 = [self.transformer(item) for item in list_1]
         transformed_list_2 = [self.transformer(item) for item in list_2]
-        interleaved = [item for pair in zip(transformed_list_1, transformed_list_2) for item in pair]
+        interleaved = [
+            item
+            for pair in zip(transformed_list_1, transformed_list_2)
+            for item in pair
+        ]
         return ", ".join(interleaved)
 
-    def get_or_create_payload(self, list_1: List[str], list_2: List[str]) -> CachedPayload:
+    def get_or_create_payload(
+        self, list_1: List[str], list_2: List[str]
+    ) -> CachedPayload:
         cache_key = self.generate_cache_key(list_1, list_2)
 
         cached_payload = self.repository.get_payload_by_id(cache_key)

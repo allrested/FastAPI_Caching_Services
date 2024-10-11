@@ -9,6 +9,7 @@ services:
     volumes:
       - ./app:/app
       - ./tests:/tests
+      - ./Makefile:/Makefile
     networks:
       app_proxy:
         ipv4_address: 172.28.1.1
